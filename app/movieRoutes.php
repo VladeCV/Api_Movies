@@ -9,4 +9,9 @@ return function (App $app) {
         $group->get('', MovieAction::class . ':getLista');
         $group->post('', MovieAction::class . ':save');
     });
+
+    $app->group('/api/movies/in-memory', function (Group $group) {
+        $group->get('', MovieAction::class . ':getListInMemory');
+        $group->post('', MovieAction::class . ':saveInMemory');
+    });
 };

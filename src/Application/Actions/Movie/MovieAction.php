@@ -44,4 +44,24 @@ class MovieAction extends Action
         $res = $this->repository->save($body);
         return $this->respondWithData($res['data'], $res['message'], $res['statusCode'], $res['success']);
     }
+
+    public function getListInMemory(Request $request, Response $response, $args): Response
+    {
+        $this->request = $request;
+        $this->response = $response;
+        $this->args = $args;
+        $body = ['id_usuario' => '$userUUID', 'body' => 'queryParam'];
+        $res = $this->repository->getListInMemory($body);
+        return $this->respondWithData($res['data'], $res['message'], $res['statusCode'], $res['success']);
+    }
+
+    public function saveInMemory(Request $request, Response $response, $args): Response
+    {
+        $this->request = $request;
+        $this->response = $response;
+        $this->args = $args;
+        $body = $request->getParsedBody();
+        $res = $this->repository->saveInMemory($body);
+        return $this->respondWithData($res['data'], $res['message'], $res['statusCode'], $res['success']);
+    }
 }
