@@ -33,13 +33,13 @@ class DataMovieRepository implements MovieRepository
     public function save($body): array
     {
         if (!isset($body['title'])) {
-            return ['data' => array(), "message" => 'Title not in body', 'statusCode' => 200, 'success' => false];
+            return ['data' => [], "message" => 'Title not in body', 'statusCode' => 200, 'success' => false];
         }
         if (!isset($body['category'])) {
-            return ['data' => array(), "message" => 'Category not in body', 'statusCode' => 200, 'success' => false];
+            return ['data' => [], "message" => 'Category not in body', 'statusCode' => 200, 'success' => false];
         }
         if (!isset($body['releaseYear'])) {
-            return ['data' => array(), "message" => 'Release year not in body', 'statusCode' => 200, 'success' => false];
+            return ['data' => [], "message" => 'Release year not in body', 'statusCode' => 200, 'success' => false];
         }
 
         $title = $body['title'];
@@ -72,11 +72,8 @@ class DataMovieRepository implements MovieRepository
             ];
 
             return ['data' => $data, 'message' => 'Movie created', 'statusCode' => 200, 'success' => true];
-
-
         } catch (\Exception $ex) {
             return ['data' => $ex, 'message' => 'Unable to create movie', 'statusCode' => 200, 'success' => true];
         }
-
     }
 }
